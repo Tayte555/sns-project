@@ -1,7 +1,7 @@
 import java.net.Socket;
 import java.io.IOException;
 
-public class ChatClient {
+public class Client {
     private static final String SERVER_IP = "10.76.191.150";
     private static final int SERVER_PORT = 5000;
 
