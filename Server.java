@@ -19,8 +19,10 @@ public class Server {
         // This tells Java where to find the certificate and the password to open it
 
         System.setProperty("javax.net.ssl.keyStore", "mykeystore.jks");
-
         System.setProperty("javax.net.ssl.keyStorePassword", "123456");
+
+        System.setProperty("javax.net.ssl.trustStore", "servertruststore.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword", "123456");
 
         try {
 
@@ -31,7 +33,8 @@ public class Server {
             // 2. Create the SSL ServerSocket, passing just port to listen to all interfaces
 
             SSLServerSocket listener = (SSLServerSocket) sslFactory.createServerSocket(PORT);
-
+            listener.setNeedClientAuth(true);
+            
             System.out.println("SECURE Server is running on port: " + PORT);
 
             System.out.println("Waiting for SSL handshake...");

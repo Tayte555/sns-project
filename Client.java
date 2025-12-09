@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Client {
 
-    private static final String SERVER_IP = "10.137.56.139";
+    private static final String SERVER_IP = "127.0.0.1";
 
     private static final int SERVER_PORT = 5000;
 
@@ -17,8 +17,10 @@ public class Client {
 
         // LOAD THE TRUSTSTORE so we can verify the server's certificate
 
-        System.setProperty("javax.net.ssl.trustStore", "mykeystore.jks");
-
+        System.setProperty("javax.net.ssl.keyStore", "clientkeystore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "123456");
+        
+        System.setProperty("javax.net.ssl.trustStore", "client_truststore.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "123456");
 
         try {
